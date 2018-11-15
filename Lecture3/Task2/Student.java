@@ -4,7 +4,7 @@ public class Student {
     private String surname;
     private int age;
 
-    public Student(int id, String name, String surname, int age){
+    public Student(int id, String name, String surname, int age) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -25,5 +25,15 @@ public class Student {
 
     public int getAge() {
         return age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
