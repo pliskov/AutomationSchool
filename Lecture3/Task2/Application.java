@@ -20,21 +20,7 @@ public class Application {
 
         System.out.println("\nAverage students age is " + getAvgAge(studentList));
 
-        char searchByLetter = Helper.getFindRequest();
-
-        List<Student> studentListSortedBySurname = FactoryStudentsLists.createStudentsList();
-        for (Student aStudent : studentList) {
-            if (aStudent.getSurname().charAt(0) == searchByLetter) {
-                studentListSortedBySurname.add(aStudent);
-            }
-        }
-
-        if (studentListSortedBySurname.size() == 0) {
-            System.out.println("There aren't students with Surname started from " + searchByLetter);
-        } else {
-            System.out.println("List of students with Surname started from " + searchByLetter + ":\n" +
-                    studentListSortedBySurname);
-        }
+        Helper.findStudentsByFirstLetterInSurname(studentList);
     }
 
     public static double getAvgAge(List<Student> list) {
