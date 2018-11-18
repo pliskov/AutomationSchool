@@ -1,0 +1,3 @@
+Volkswagen,15000,7
+Volkswagen,21000,7
+Nissan,10000,8
