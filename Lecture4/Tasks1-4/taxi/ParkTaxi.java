@@ -28,18 +28,21 @@ public final class ParkTaxi {
     public static List getCarsFromFile(List<Car> list) {
         String inputFile = "Lecture4/Tasks1-4/taxi/cars.csv";
         String line;
-        String splitBy = ",";
+        String splitBy = "\\s*(\\s|,|!|\\.)\\s*";
 
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
             while ((line = br.readLine()) != null) {
                 String[] inputCarsArray = line.split(splitBy);
-                try {
-                    list.add(FactoryCars.createCar(inputCarsArray[0], Integer.parseInt(inputCarsArray[1]),
-                            Integer.parseInt(inputCarsArray[2])));
-                } catch (CreatingParkException e) {
-                    e.printStackTrace();
+                if (inputCarsArray[1].matches("\\d*") && inputCarsArray[2].matches("\\d*")) {
+                    try {
+                        list.add(FactoryCars.createCar(inputCarsArray[0], Integer.parseInt(inputCarsArray[1]),
+                                Integer.parseInt(inputCarsArray[2])));
+                    } catch (CreatingParkException e) {
+                        e.printStackTrace();
+                    }
                 }
+                else System.out.println("Some numeric car parameter is incorrect");
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
