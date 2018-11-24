@@ -17,5 +17,7 @@ public class Car {
         return consumption;
     }
 
-    public String printCar() { return ""; }
+    public String printCar() {
+        return "";
+    }
 }

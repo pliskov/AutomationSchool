@@ -7,16 +7,6 @@ public class Renault extends Car {
     }
 
     @Override
-    public int getPrice() {
-        return price;
-    }
-
-    @Override
-    public int getConsumption() {
-        return consumption;
-    }
-
-    @Override
     public String toString() {
         return "Renault{" +
                 "price=" + price +

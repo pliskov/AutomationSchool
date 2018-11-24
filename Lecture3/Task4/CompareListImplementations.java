@@ -10,14 +10,17 @@ public class CompareListImplementations {
         List<Integer> linkedList = new LinkedList<>();
 
         Random random = new Random();
-        for(int i = 1; i <= 10000000; i++){
+        for (int i = 1; i <= 10000000; i++) {
             int number = random.nextInt();
             arrayList.add(number);
+        }
+        for (int i = 1; i <= 10000000; i++) {
+            int number = random.nextInt();
             linkedList.add(number);
         }
 
         long arrayAddStartTime = System.nanoTime();
-        for(int i = 1; i <= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             int number = random.nextInt();
             arrayList.add(number);
         }
@@ -26,7 +29,7 @@ public class CompareListImplementations {
                 " nanoseconds for ArrayList");
 
         long linkedAddStartTime = System.nanoTime();
-        for(int i = 1; i <= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             int number = random.nextInt();
             linkedList.add(number);
         }
@@ -37,7 +40,7 @@ public class CompareListImplementations {
         System.out.println();
 
         long arrayRemoveStartTime = System.nanoTime();
-        for(int i = 1; i <= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             arrayList.remove(i);
         }
         long arrayRemoveEndTime = System.nanoTime();
@@ -45,7 +48,7 @@ public class CompareListImplementations {
                 " nanoseconds for ArrayList");
 
         long linkedRemoveStartTime = System.nanoTime();
-        for(int i = 1; i <= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             linkedList.remove(i);
         }
         long linkedRemoveEndTime = System.nanoTime();
@@ -55,7 +58,7 @@ public class CompareListImplementations {
         System.out.println();
 
         long arraySearchStartTime = System.nanoTime();
-        for(int i = 1; i<= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             arrayList.get(i);
         }
         long arraySearchEndTime = System.nanoTime();
@@ -63,7 +66,7 @@ public class CompareListImplementations {
                 " nanoseconds for ArrayList");
 
         long linkedSearchStartTime = System.nanoTime();
-        for(int i = 1; i<= 1000; i++){
+        for (int i = 1; i <= 1000; i++) {
             linkedList.get(i);
         }
         long linkedSearchEndTime = System.nanoTime();
