@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Calculator tests">
+    <test name="CalcTests">
+        <classes>
+            <class name="TestCalcAdd"/>
+            <class name="TestCalcSubtract"/>
+            <class name="TestCalcMultiply"/>
+            <class name="TestCalcDivide"/>
+        </classes>
+    </test>
+</suite>
