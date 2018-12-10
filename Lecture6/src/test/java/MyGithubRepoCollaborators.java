@@ -9,41 +9,34 @@ import user.User;
 import java.io.IOException;
 
 import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.RestAssured.preemptive;
 
 public class MyGithubRepoCollaborators {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://api.github.com";
+        RestAssured.authentication = preemptive().basic("pliskov", "vitalyp1");
     }
 
     @Test
     public void getListCollaborators() throws IOException {
-        Response response = given()
-                .auth()
-                .preemptive()
-                .basic("pliskov", "ieNgahN8")
-                .when()
-                .get("/repos/pliskov/AutomationSchool/collaborators");
+        Response response = given().get("/repos/pliskov/AutomationSchool/collaborators");
         ObjectMapper objectMapper = new ObjectMapper();
-        User[] users = objectMapper.readValue(response.asString(), User[].class);
-        for (User user : users) {
-            System.out.println(user.getLogin());
-        }
+            User[] users = objectMapper.readValue(response.asString(), User[].class);
+            for (User user : users) {
+                System.out.println(user.getLogin());
+            }
     }
 
     @Test
     public void addCollaborator() {
-        Response response = given()
-                .auth()
-                .preemptive()
-                .basic("pliskov", "ieNgahN8")
-                .when()
-                .put("/repos/pliskov/AutomationSchool/collaborators/fabjke");
-        if (response.statusCode() == 201) {
+        Response response = given().put("/repos/pliskov/AutomationSchool/collaborators/fabjke");
+        int successCode = 201;
+        if (response.statusCode() == successCode) {
             System.out.println("The invite has been successfully sent");
         } else {
             System.out.println("The invite has not been sent");
         }
-        Assert.assertEquals(response.statusCode(), 201);
+        Assert.assertEquals(response.statusCode(), successCode);
     }
 }
