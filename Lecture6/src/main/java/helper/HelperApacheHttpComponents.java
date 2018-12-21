@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.AuthCache;
@@ -23,8 +24,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class HelperApacheHttpComponents {
-    public static List<User> getUsers(HttpRequest httpRequest) throws IOException {
-        CloseableHttpResponse response = getResponse(httpRequest);
+    public static List<User> getUsers(CloseableHttpResponse response) throws IOException {
         HttpEntity entity = response.getEntity();
         ObjectMapper objectMapper = new ObjectMapper();
         List<User> userList = objectMapper.readValue(EntityUtils.toString(entity), new TypeReference<List<User>>() {
@@ -33,14 +33,13 @@ public class HelperApacheHttpComponents {
         return userList;
     }
 
-    public static int getResponseStatusCode(HttpRequest httpRequest) throws IOException {
-        CloseableHttpResponse response = getResponse(httpRequest);
+    public static int getResponseStatusCode(CloseableHttpResponse response) throws IOException {
         int statusCode = response.getStatusLine().getStatusCode();
         response.close();
         return statusCode;
     }
 
-    private static CloseableHttpResponse getResponse(HttpRequest httpRequest) throws IOException {
+    public static CloseableHttpResponse sendRequest(HttpRequest httpRequest) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpHost targetHost = new HttpHost("api.github.com", 443, "https");
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
