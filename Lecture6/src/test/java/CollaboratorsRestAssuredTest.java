@@ -12,7 +12,7 @@ import java.util.List;
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.preemptive;
 
-public class TestRestAssuredCollaborators {
+public class CollaboratorsRestAssuredTest {
     @BeforeClass
     public void setup() {
         RestAssured.baseURI = "https://api.github.com";

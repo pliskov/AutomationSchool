@@ -10,7 +10,7 @@ import user.User;
 import java.io.IOException;
 import java.util.List;
 
-public class TestApacheCollaborators {
+public class CollaboratorsApacheTest {
     @Test
     public void getCollaborators() throws IOException {
         HttpRequest httpRequest = new HttpGet("/repos/pliskov/AutomationSchool/collaborators");
