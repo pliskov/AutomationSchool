@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class AddRandomTractorToCartTest {
     private final String shopUrl = "https://onliner.by";
     private final String shopCartUrl = "https://cart.onliner.by";
-    private final Browser browser = Browser.FIREFOX;
+    private final Browser browser = Browser.CHROME;
 
     @Test
     private void addRandomTractorToCartTest() throws InterruptedException {

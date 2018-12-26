@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class Helper {
@@ -25,16 +26,26 @@ public class Helper {
     }
 
     public static Boolean isInCart(String shopCartUrl, WebDriver driver, String product) throws InterruptedException {
+        Boolean exist = false;
         driver.get(shopCartUrl);
         Thread.sleep(2000);
-        if (product.equals(driver.findElement(By.xpath(
-                "//a[@class='cart-product-title__link cart-product-title__link_name']/span")).getText())) {
-            System.out.println("The product is in the cart");
-            return true;
-        } else {
-            System.out.println("There isn't product in the cart");
-            return false;
+        try {
+            List<WebElement> listCartProducts = driver.findElements(By.xpath(
+                    "//a[@class='cart-product-title__link cart-product-title__link_name']/span"));
+            for(WebElement webElement: listCartProducts){
+                if (product.equals(webElement.getText())) {
+                    System.out.println("The product is in the cart");
+                    exist = true;
+                    return exist;
+                }
+            }
         }
+        catch (NoSuchElementException e) {
+            System.out.println("There isn't product in the cart");
+            exist = false;
+            return exist;
+        }
+        return exist;
     }
 
     private static int getRandom(int range) {
