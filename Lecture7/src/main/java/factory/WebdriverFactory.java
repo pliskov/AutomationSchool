@@ -9,8 +9,8 @@ public class WebdriverFactory {
     private WebdriverFactory() {
     }
 
-    public static WebDriver createWebdriver(Browser webdriver) {
-        switch (webdriver) {
+    public static WebDriver createWebdriver(Browser browser) {
+        switch (browser) {
             case CHROME:
                 System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
                 return new ChromeDriver();
