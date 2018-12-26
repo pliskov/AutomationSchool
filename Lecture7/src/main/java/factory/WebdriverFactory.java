@@ -18,7 +18,7 @@ public class WebdriverFactory {
                 System.setProperty("webdriver.gecko.driver", "webdrivers/geckodriver.exe");
                 return new FirefoxDriver();
             default:
-                throw new RuntimeException("Unknown webdriver type");
+                throw new RuntimeException("Unknown browser");
         }
     }
 }

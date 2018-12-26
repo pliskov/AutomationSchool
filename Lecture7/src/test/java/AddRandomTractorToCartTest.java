@@ -12,6 +12,7 @@ public class AddRandomTractorToCartTest {
     @Test
     private void addRandomTractorToCartTest() throws InterruptedException {
         WebDriver driver = WebdriverFactory.createWebdriver(browser);
-        Assert.assertTrue(Helper.isInCart(shopCartUrl, driver, Helper.addRandomTractorToCart(shopUrl, driver)));
+        String tractorInCart = Shop.addRandomTractorToCart(shopUrl, driver);
+        Assert.assertTrue(Shop.isInCart(shopCartUrl, driver, tractorInCart));
     }
 }
