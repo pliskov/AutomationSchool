@@ -8,12 +8,9 @@ public class Shop {
         driver.get(homepageUrl);
         Thread.sleep(5000);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        homePage.openCatalogPage();
-        CatalogPage catalogPage = PageFactory.initElements(driver, CatalogPage.class);
-        catalogPage.openCatalogTractorsPage();
-        CatalogTractorsPage catalogTractorsPage = PageFactory.initElements(driver, CatalogTractorsPage.class);
-        catalogTractorsPage.openRandomTractorPricesPage();
-        TractorPricesPage tractorPricesPage = PageFactory.initElements(driver, TractorPricesPage.class);
+        CatalogPage catalogPage = homePage.openCatalogPage();
+        CatalogTractorsPage catalogTractorsPage = catalogPage.openCatalogTractorsPage();
+        TractorPricesPage tractorPricesPage = catalogTractorsPage.openRandomTractorPricesPage();
         tractorPricesPage.addTractorToCart();
         return catalogTractorsPage.getSelectedTractor();
     }
