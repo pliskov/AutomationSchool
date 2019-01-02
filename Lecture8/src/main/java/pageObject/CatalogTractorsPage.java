@@ -14,14 +14,25 @@ public class CatalogTractorsPage extends AbstractPage {
     @FindBy(xpath = "//a[@class='schema-product__button button button_orange']")
     private List<WebElement> listOffersButtons;
 
+    private int selectedRandomNumber;
+    private String selectedTractor;
+
     public CatalogTractorsPage(WebDriver driver) {
         super(driver);
     }
 
+    public int getSelectedRandomNumber() {
+        return selectedRandomNumber;
+    }
+
+    public String getSelectedTractor() {
+        return selectedTractor;
+    }
+
     public TractorPricesPage openRandomTractorPricesPage() {
-        int i = Helper.getRandom(listTractorsTitles.size());
-        String selectedTractor = listTractorsTitles.get(i).getText();
-        listOffersButtons.get(i).click();
-        return new TractorPricesPage();
+        selectedRandomNumber = Helper.getRandom(listTractorsTitles.size());
+        selectedTractor = listTractorsTitles.get(selectedRandomNumber).getText();
+        listOffersButtons.get(selectedRandomNumber).click();
+        return new TractorPricesPage(driver);
     }
 }
