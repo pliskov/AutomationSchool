@@ -13,7 +13,6 @@ public class Shop {
     public String addRandomTractorToCart() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.open();
-        Thread.sleep(5000);
         CatalogPage catalogPage = homePage.openCatalogPage();
         CatalogTractorsPage catalogTractorsPage = catalogPage.openCatalogTractorsPage();
         TractorPricesPage tractorPricesPage = catalogTractorsPage.openRandomTractorPricesPage();
@@ -25,7 +24,6 @@ public class Shop {
         boolean exist = false;
         CartPage cartPage = new CartPage(driver);
         cartPage.openCart();
-        Thread.sleep(2000);
         for (WebElement webElement : cartPage.getListCartProducts()) {
             if (product.equals(webElement.getText())) {
                 System.out.println("The product is in the cart");
