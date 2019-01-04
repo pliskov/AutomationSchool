@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends AbstractPage {
+public class HomePage extends BasePage {
     private final String homePageUrl = "https://onliner.by";
 
     @FindBy(xpath = "//a[@href='https://catalog.onliner.by/']")

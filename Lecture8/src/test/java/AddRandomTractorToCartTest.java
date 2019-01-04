@@ -19,7 +19,7 @@ public class AddRandomTractorToCartTest {
     }
 
     @Test
-    private void addRandomTractorToCartTest() throws InterruptedException {
+    private void addRandomTractorToCartTest() {
         Shop shop = new Shop(driver);
         String tractorInCart = shop.addRandomTractorToCart();
         Assert.assertTrue(shop.isInCart(tractorInCart));

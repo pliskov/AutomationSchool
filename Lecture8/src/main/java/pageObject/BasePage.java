@@ -2,10 +2,10 @@ package pageObject;
 
 import org.openqa.selenium.WebDriver;
 
-public class AbstractPage {
+public class BasePage {
     protected final WebDriver driver;
 
-    public AbstractPage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 }

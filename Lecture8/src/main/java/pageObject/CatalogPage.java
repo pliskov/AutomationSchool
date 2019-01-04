@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CatalogPage extends AbstractPage {
+public class CatalogPage extends BasePage {
 
     @FindBy(xpath = "//li[@data-id='6']")
     private WebElement autoMotoTab;

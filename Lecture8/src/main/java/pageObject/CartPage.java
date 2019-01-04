@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CartPage extends AbstractPage {
+public class CartPage extends BasePage {
     private final String shopCartUrl = "https://cart.onliner.by";
 
     @FindBy(xpath = "//a[@class='cart-product-title__link cart-product-title__link_name']/span")

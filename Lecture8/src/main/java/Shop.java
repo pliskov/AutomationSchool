@@ -9,17 +9,17 @@ public class Shop {
         this.driver = driver;
     }
 
-    public String addRandomTractorToCart() throws InterruptedException {
+    public String addRandomTractorToCart() {
         HomePage homePage = new HomePage(driver);
         homePage.open();
         CatalogPage catalogPage = homePage.openCatalogPage();
         CatalogTractorsPage catalogTractorsPage = catalogPage.openCatalogTractorsPage();
         TractorPricesPage tractorPricesPage = catalogTractorsPage.openRandomTractorPricesPage();
         tractorPricesPage.addTractorToCart();
-        return catalogTractorsPage.getSelectedTractor();
+        return tractorPricesPage.getTractorName();
     }
 
-    public boolean isInCart(String product) throws InterruptedException {
+    public boolean isInCart(String product) {
         boolean exist = false;
         CartPage cartPage = new CartPage(driver);
         cartPage.openCart();
